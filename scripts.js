@@ -186,9 +186,8 @@ function testRegex() {
 // ===============================================
 
 function switchLanguage(langCode) {
-  // BASE_PATH deve ser definido na tag <script> no HTML (ex: '/martech-tools/')
   if (typeof BASE_PATH === 'undefined') {
-    alert("BASE_PATH não está definido no HTML. Verifique a documentação.");
+    console.error("BASE_PATH não está definido no HTML. Verifique a documentação.");
     return;
   }
 
