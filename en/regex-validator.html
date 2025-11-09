@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Regex Validator | MarTech Tools</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h2>MarTech Tools</h2>
+      <a href="index.html">🏠 Home</a>
+      <a href="cookie-generator.html">🍪 Cookie Generator</a>
+      <a href="regex-validator.html" class="active">🔍 Regex Validator</a>
+      <div class="legal-links">
+        <a href="privacidade.html">Privacy Policy</a>
+        <a href="termos.html">Terms of Use</a>
+        <a href="contato.html">Contact</a>
+      </div>
+    </div>
+    <div class="main-content">
+      <div class="language-selector">
+        <select id="language-switcher" onchange="switchLanguage(this.value)">
+          <option value="pt">🇧🇷 Português</option>
+          <option value="en" selected>🇺🇸 English</option>
+          <option value="es">🇪🇸 Español</option>
+        </select>
+      </div>
+      <h1>🔍 URL Regex Validator</h1>
+      <p>Test if a specific URL matches your Regex. Essential for optimizing Tag firing rules in Launch and Tealium.</p>
+      <div class="ad-space-top">[AdSense - Top Leaderboard 728x90]</div>
+      <div class="tool-content">
+        <div class="form-group">
+          <label for="regexInput">Regular Expression (Regex):</label>
+          <input type="text" id="regexInput" placeholder="Ex: \/product\/.+\/checkout" oninput="testRegex()">
+        </div>
+        <div class="form-group">
+          <label for="urlInput">Test URL:</label>
+          <input type="text" id="urlInput" placeholder="Ex: https://www.example.com/product/sku99/checkout"
+            oninput="testRegex()">
+        </div>
+        <h3 style="margin-top: 10px;">Test Result:</h3>
+        <div id="matchStatus" class="match-status">
+          Enter the Regex and URL above to test.
+        </div>
+        <h3 style="margin-top: 20px;">Regex Captures (Matches):</h3>
+        <textarea id="regexResult" readonly>// Matches captured by the Regex (Groups)</textarea>
+        <div class="ad-space-bottom"
+          style="margin-top: 40px; height: 250px; background-color: #e0e0e0; text-align: center; line-height: 250px; border-radius: 4px;">
+          [AdSense - Responsive Block]</div>
+      </div>
+    </div>
+  </div>
+  <script src="../scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de Código de Cookies | MarTech Tools</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h2>MarTech Tools</h2>
+      <a href="index.html">🏠 Inicio</a>
+      <a href="cookie-generator.html" class="active">🍪 Generador de Cookies</a>
+      <a href="regex-validator.html">🔍 Validador Regex</a>
+
+      <div class="legal-links">
+        <a href="privacidade.html">Política de Privacidad</a>
+        <a href="termos.html">Términos de Uso</a>
+        <a href="contato.html">Contacto</a>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="language-selector">
+        <select id="language-switcher" onchange="switchLanguage(this.value)">
+          <option value="pt">🇧🇷 Português</option>
+          <option value="en">🇺🇸 English</option>
+          <option value="es" selected>🇪🇸 Español</option>
+        </select>
+      </div>
+
+      <h1>🍪 Generador de Código JavaScript para Cookies</h1>
+      <p>Cree funciones robustas de cookies para Adobe Launch y Tealium iQ sin depender de librerías externas.</p>
+
+      <div class="ad-space-top">
+        [AdSense - Top Leaderboard 728x90]
+      </div>
+
+      <div class="tool-content" id="cookie-generator-form">
+
+        <div class="form-group">
+          <label for="cookieName">Nombre de la Cookie (c_name):</label>
+          <input type="text" id="cookieName" placeholder="user_segment" required oninput="generateCode()">
+        </div>
+
+        <div class="form-group">
+          <label for="cookieValue">Valor por Defecto (c_value, opcional):</label>
+          <input type="text" id="cookieValue" placeholder="default_value" oninput="generateCode()">
+        </div>
+
+        <div class="form-group">
+          <label for="expireDays">Expiración (Días, opcional):</label>
+          <input type="number" id="expireDays" placeholder="30" min="0" oninput="generateCode()">
+        </div>
+
+        <div class="form-group">
+          <label for="cookiePath">Ruta (c_path, opcional, por defecto '/'):</label>
+          <input type="text" id="cookiePath" placeholder="/" oninput="generateCode()">
+        </div>
+
+        <div class="form-group">
+          <label for="cookieDomain">Dominio (c_domain, opcional, importante para subdominios):</label>
+          <input type="text" id="cookieDomain" placeholder="Ej: .ejemplo.com" oninput="generateCode()">
+        </div>
+
+        <button onclick="generateCode()">Generar Código</button>
+
+        <h3 style="margin-top: 40px;">Código JavaScript Generado:</h3>
+
+        <div class="copy-container">
+          <button class="copy-button" onclick="copyCode()">Copiar Código</button>
+        </div>
+        <textarea id="outputCode" readonly>// Haga clic en Generar Código para empezar...</textarea>
+
+        <div class="ad-space-bottom"
+          style="margin-top: 40px; height: 250px; background-color: #e0e0e0; text-align: center; line-height: 250px; border-radius: 4px;">
+          [AdSense - Bloque Responsivo 300x250/336x280]
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,231 @@
+/* style.css - REFINAMENTO VISUAL */
+
+/* ------------------------------------------- */
+/* 1. ESTILOS BASE (PADRÃO: MÓVEL) */
+/* ------------------------------------------- */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  margin: auto;
+  min-height: 100vh;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.08); /* Adiciona sombra discreta ao container */
+}
+
+/* Sidebar no celular */
+.sidebar {
+  width: 100%;
+  background-color: #282c34;
+  color: white;
+  padding: 10px 0;
+  box-shadow: none; /* Remove a sombra vertical no celular */
+  flex-shrink: 0;
+}
+.sidebar h2 {
+  text-align: center;
+  color: #61afef;
+  margin: 10px 0 15px; /* Margin ajustada */
+  font-size: 1.5em;
+}
+.sidebar a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: white;
+  transition: background-color 0.3s;
+  border-left: 5px solid transparent;
+}
+.sidebar a:hover {
+  background-color: #3e4451;
+}
+.sidebar a.active {
+  background-color: #3e4451;
+  border-left-color: #007bff;
+}
+.sidebar .legal-links {
+  display: none;
+}
+
+/* Main Content no celular */
+.main-content {
+  flex-grow: 1;
+  padding: 20px; /* Padding ajustado para melhor respiração visual */
+  background: white;
+  overflow-x: hidden;
+}
+
+/* Anúncios e Inputs */
+.ad-space-top {
+  width: 100%;
+  height: 90px;
+  margin-bottom: 25px; /* Mais espaço abaixo do anúncio */
+  background-color: #e0eeef;
+  text-align: center;
+  line-height: 90px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Espaçamento entre os grupos de formulário */
+.form-group {
+  margin-bottom: 20px; /* Mais margem entre os inputs */
+}
+
+label {
+  display: block;
+  margin-bottom: 8px; /* Mais margem abaixo do label */
+  font-weight: bold;
+}
+
+input[type='text'],
+input[type='number'],
+textarea {
+  width: 100%;
+  padding: 12px; /* Padding interno maior para melhor toque no celular */
+  border: 1px solid #ccc;
+  border-radius: 6px; /* Borda mais suave */
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+/* Código e Botões */
+#outputCode,
+#regexResult {
+  width: 100%;
+  min-height: 150px;
+  padding: 15px;
+  border: 1px solid #282c34;
+  border-radius: 6px;
+  background-color: #282c34;
+  color: #61afef;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 14px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 25px; /* Padding maior */
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Copy Button */
+.copy-container {
+  text-align: right;
+  margin-bottom: 15px; /* Margem ajustada */
+}
+.copy-button {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  margin-top: 0;
+}
+.copy-button:hover:not(:disabled) {
+  background-color: #1e7e34;
+}
+
+/* Regex Status */
+.match-status {
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+.match-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+.match-failure {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* ------------------------------------------- */
+/* 2. MEDIA QUERY (TABLET E DESKTOP) */
+/* ------------------------------------------- */
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    max-width: 1200px;
+  }
+
+  /* Sidebar - Retorna ao layout fixo */
+  .sidebar {
+    width: 250px;
+    padding: 20px 0;
+    /* Adiciona sombra sutil para destacar a sidebar do conteúdo */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  .sidebar h2 {
+    margin-bottom: 30px;
+  }
+
+  /* Mostrar links legais novamente */
+  .sidebar .legal-links {
+    display: block;
+  }
+
+  /* Main Content - Retorna ao padding de desktop */
+  .main-content {
+    padding: 40px; /* Padding maior no desktop */
+  }
+
+  /* Anúncio Top - Permite o bloco grande */
+  .ad-space-top {
+    height: 90px;
+    margin-bottom: 30px;
+  }
+}
+
+/* Adicionar no final do seu style.css */
+/* Estilos para o Seletor de Idioma */
+.language-selector {
+  position: absolute; /* Posição absoluta em relação ao main-content (se for position: relative) */
+  top: 15px;
+  right: 15px;
+  z-index: 10;
+  font-size: 0.9em;
+  padding: 5px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+.language-selector select {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1em;
+  color: #333;
+}
+
+/* Adicionar no .main-content (no style.css) */
+.main-content {
+  /* ... estilos existentes ... */
+  position: relative; /* FUNDAMENTAL para que o seletor absoluto funcione */
+}
