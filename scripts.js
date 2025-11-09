@@ -186,40 +186,35 @@ function testRegex() {
 
 
 // ===============================================
-// 4. LÓGICA DE TROCA DE IDIOMA (CORRIGIDA E ROBUSTA)
+// 4. LÓGICA DE TROCA DE IDIOMA (CORRIGIDA E UNIVERSAL)
 // ===============================================
 
 function switchLanguage(langCode) {
   const currentURL = window.location.pathname;
 
-  // 1. Regex para remover o prefixo de idioma atual (ex: /en/ ou /es/) e a barra inicial.
-  // O /i no final garante que seja case-insensitive.
-  const langRegex = /^\/(en|es)\/?/i;
-  let baseFileName = currentURL.replace(langRegex, '');
+  // 1. Extração do nome do arquivo base (Mais robusta contra barras extras).
+  // Usa split('/') e filter() para obter segmentos válidos.
+  const pathSegments = currentURL.split('/').filter(segment => segment !== '');
 
-  // 2. Garante que 'baseFileName' não contenha a primeira barra da URL.
-  if (baseFileName.startsWith('/')) {
-    baseFileName = baseFileName.substring(1);
+  // 2. Remove o prefixo de idioma se estiver presente (o primeiro segmento)
+  if (pathSegments.length > 0 && (pathSegments[0] === 'en' || pathSegments[0] === 'es')) {
+    pathSegments.shift();
   }
 
-  // 3. Verifica se o resultado é a raiz ou um diretório vazio.
-  // Em muitos casos, se for a raiz, o resultado será vazio ou apenas '/'.
-  if (baseFileName === '' || baseFileName === '/') {
-    baseFileName = 'index.html';
-  }
+  // 3. O último segmento é o nome do arquivo. Se o array estiver vazio, é o index.
+  const fileName = pathSegments.pop() || 'index.html';
 
   let newPath;
 
   if (langCode === 'pt') {
-    // Se for Português, o caminho é a raiz + nome do arquivo.
-    newPath = '/' + baseFileName;
+    // Para PT, o caminho é a raiz + nome do arquivo.
+    newPath = '/' + fileName;
   } else {
-    // Se for 'en' ou 'es', o caminho é /lang/ + nome do arquivo.
-    newPath = `/${langCode}/${baseFileName}`;
+    // Para outros idiomas, o caminho é /lang/ + nome do arquivo.
+    newPath = `/${langCode}/${fileName}`;
   }
 
-  // O .replace(/\/\//g, '/') é uma camada extra de segurança para remover barras duplas
-  // caso ainda surjam em algum cenário atípico de navegador/servidor.
+  // A camada de segurança final remove barras duplas que podem ter sido criadas.
   newPath = newPath.replace(/\/\//g, '/');
 
   // Redireciona o usuário para o novo caminho
