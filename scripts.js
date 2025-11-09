@@ -1,11 +1,12 @@
-// scripts.js - LÓGICA FINAL DAS FERRAMENTAS MARTECH
+// scripts.js - CORRIGIDO PARA SUBDIRETÓRIOS E BASE_PATH
 
 // ===============================================
 // 1. LÓGICA DO GERADOR DE CÓDIGO COOKIE
+// ... (Mantida) ...
 // ===============================================
 
 function generateCode() {
-  // Função utilitária para pegar o valor do input ou o placeholder como fallback
+  // ... (Função generateCode completa, mantida) ...
   const getValue = (id, placeholder) => {
     const inputElement = document.getElementById(id);
     return inputElement ? (inputElement.value.trim() || placeholder) : placeholder;
@@ -26,7 +27,6 @@ function generateCode() {
     return;
   }
 
-  // 1. Geração da string de Expiração (expires)
   let expires = "";
   if (days && parseInt(days) > 0) {
     const date = new Date();
@@ -34,17 +34,14 @@ function generateCode() {
     expires = `; expires=\${date.toUTCString()}`;
   }
 
-  // 2. Geração das strings de Path e Domain
   const domainConfig = domain ? `; domain=\${domain}` : '';
 
-  // 3. Montagem do Código Final
   const generatedCode = `
 /**
 * Funções de Gerenciamento de Cookies (Otimizado para Tag Managers)
 * Gerado em \${new Date().toLocaleDateString('pt-BR')}
 */
-
-// 1. SET COOKIE
+// ... (restante do código gerado) ...
 function setCookie(name, value, days) {
   const expDays = days || \${days}; 
   let expires = "";
@@ -60,7 +57,6 @@ function setCookie(name, value, days) {
   document.cookie = name + "=" + (value || "") + expires + pathConfig + domainConfig;
 }
 
-// 2. GET COOKIE
 function getCookie(name) {
   const nameEQ = name + "=";
   const ca = document.cookie.split(';');
@@ -74,11 +70,9 @@ function getCookie(name) {
   return null; 
 }
 
-// 3. DELETE COOKIE
 function deleteCookie(name) {
   document.cookie = name + "=; Max-Age=-99999999; path=${path}${domainConfig}";
 }
-
 /* Exemplo de Uso (Valores padrão: Nome='${name}', Valor='${value}', Dias=${days}) */
 // setCookie('${name}', '${value}', ${days});
 // const segment = getCookie('${name}');
@@ -89,6 +83,7 @@ function deleteCookie(name) {
 
 // ===============================================
 // 2. LÓGICA DO BOTÃO COPIAR
+// ... (Mantida) ...
 // ===============================================
 
 function copyCode() {
@@ -128,6 +123,7 @@ function copyCode() {
 
 // ===============================================
 // 3. LÓGICA DO VALIDADOR DE REGEX
+// ... (Mantida) ...
 // ===============================================
 
 function testRegex() {
@@ -186,38 +182,37 @@ function testRegex() {
 
 
 // ===============================================
-// 4. LÓGICA DE TROCA DE IDIOMA (CORRIGIDA E UNIVERSAL)
+// 4. LÓGICA DE TROCA DE IDIOMA (CORRIGIDA COM BASE_PATH)
 // ===============================================
 
 function switchLanguage(langCode) {
-  const currentURL = window.location.pathname;
-
-  // 1. Extração do nome do arquivo base (Mais robusta contra barras extras).
-  // Usa split('/') e filter() para obter segmentos válidos.
-  const pathSegments = currentURL.split('/').filter(segment => segment !== '');
-
-  // 2. Remove o prefixo de idioma se estiver presente (o primeiro segmento)
-  if (pathSegments.length > 0 && (pathSegments[0] === 'en' || pathSegments[0] === 'es')) {
-    pathSegments.shift();
+  // BASE_PATH deve ser definido na tag <script> no HTML (ex: '/martech-tools/')
+  if (typeof BASE_PATH === 'undefined') {
+    alert("BASE_PATH não está definido no HTML. Verifique a documentação.");
+    return;
   }
 
-  // 3. O último segmento é o nome do arquivo. Se o array estiver vazio, é o index.
-  const fileName = pathSegments.pop() || 'index.html';
+  const currentURL = window.location.pathname;
 
+  // 1. Encontrar o nome do arquivo atual (universal)
+  const urlParts = currentURL.split('/');
+  // O último elemento que não é vazio e que não é o código de idioma é o arquivo
+  let fileName = urlParts.pop() || urlParts.pop() || 'index.html';
+
+  // 2. Construir o novo caminho
   let newPath;
 
   if (langCode === 'pt') {
-    // Para PT, o caminho é a raiz + nome do arquivo.
-    newPath = '/' + fileName;
+    // PT: BASE_PATH + nome do arquivo. Ex: /martech-tools/index.html
+    newPath = BASE_PATH + fileName;
   } else {
-    // Para outros idiomas, o caminho é /lang/ + nome do arquivo.
-    newPath = `/${langCode}/${fileName}`;
+    // Outros idiomas: BASE_PATH + langCode + / + nome do arquivo. Ex: /martech-tools/es/index.html
+    newPath = BASE_PATH + langCode + '/' + fileName;
   }
 
-  // A camada de segurança final remove barras duplas que podem ter sido criadas.
+  // 3. Limpeza final para remover barras duplas indesejadas
   newPath = newPath.replace(/\/\//g, '/');
 
-  // Redireciona o usuário para o novo caminho
   window.location.href = newPath;
 }
 
@@ -226,7 +221,8 @@ function switchLanguage(langCode) {
 // ===============================================
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Inicialização do Gerador de Cookies
+  // ... (Inicialização das Ferramentas) ...
+
   const cookieGeneratorForm = document.getElementById('cookie-generator-form');
   if (cookieGeneratorForm) {
     document.querySelectorAll('#cookie-generator-form input').forEach(input => {
@@ -236,13 +232,13 @@ document.addEventListener('DOMContentLoaded', () => {
     generateCode();
   }
 
-  // 2. Inicialização do Validador Regex
   const regexInput = document.getElementById('regexInput');
   if (regexInput) {
     testRegex();
   }
 
-  // 3. Define o valor inicial correto para o Seletor de Idioma
+  // ... (Seleção Correta do Dropdown) ...
+
   const switcher = document.getElementById('language-switcher');
   if (switcher) {
     const path = window.location.pathname;
