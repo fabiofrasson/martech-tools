@@ -1,42 +1,6 @@
-// scripts.js - CORRIGIDO PARA SUBDIRETÓRIOS E BASE_PATH
-
-// ===============================================
-// 1. LÓGICA DO GERADOR DE CÓDIGO COOKIE
-// ... (Mantida) ...
-// ===============================================
-
-function generateCode() {
-  // ... (Função generateCode completa, mantida) ...
-  const getValue = (id, placeholder) => {
-    const inputElement = document.getElementById(id);
-    return inputElement ? (inputElement.value.trim() || placeholder) : placeholder;
-  };
-
-  const outputCodeElement = document.getElementById('outputCode');
-  if (!outputCodeElement) return;
-
-  const name = getValue('cookieName', 'user_segment');
-  const value = getValue('cookieValue', 'default_value');
-  const daysInput = document.getElementById('expireDays') ? document.getElementById('expireDays').value.trim() : '30';
-  const days = daysInput || '30';
-  const path = getValue('cookiePath', '/');
-  const domain = document.getElementById('cookieDomain') ? document.getElementById('cookieDomain').value.trim() : '';
-
-  if (!name) {
-    outputCodeElement.value = '// Erro: O Nome do Cookie é obrigatório.';
-    return;
-  }
-
-  let expires = "";
-  if (days && parseInt(days) > 0) {
-    const date = new Date();
-    date.setTime(date.getTime() + (parseInt(days) * 24 * 60 * 60 * 1000));
-    expires = `; expires=\${date.toUTCString()}`;
-  }
-
-  const domainConfig = domain ? `; domain=\${domain}` : '';
-
-  const generatedCode = `
+function generateCode(){const getValue=(id,placeholder)=>{const inputElement=document.getElementById(id);return inputElement?(inputElement.value.trim()||placeholder):placeholder};const outputCodeElement=document.getElementById('outputCode');if(!outputCodeElement)return;const name=getValue('cookieName','user_segment');const value=getValue('cookieValue','default_value');const daysInput=document.getElementById('expireDays')?document.getElementById('expireDays').value.trim():'30';const days=daysInput||'30';const path=getValue('cookiePath','/');const domain=document.getElementById('cookieDomain')?document.getElementById('cookieDomain').value.trim():'';if(!name){outputCodeElement.value='// Erro: O Nome do Cookie é obrigatório.';return}
+let expires="";if(days&&parseInt(days)>0){const date=new Date();date.setTime(date.getTime()+(parseInt(days)*24*60*60*1000));expires=`; expires=\${date.toUTCString()}`}
+const domainConfig=domain?`; domain=\${domain}`:'';const generatedCode=`
 /**
 * Funções de Gerenciamento de Cookies (Otimizado para Tag Managers)
 * Gerado em \${new Date().toLocaleDateString('pt-BR')}
@@ -77,178 +41,16 @@ function deleteCookie(name) {
 // setCookie('${name}', '${value}', ${days});
 // const segment = getCookie('${name}');
 // deleteCookie('${name}');
-`;
-  outputCodeElement.value = generatedCode.trim();
-}
-
-// ===============================================
-// 2. LÓGICA DO BOTÃO COPIAR
-// ... (Mantida) ...
-// ===============================================
-
-function copyCode() {
-  const codeField = document.getElementById('outputCode');
-  const copyButton = document.querySelector('.copy-button');
-
-  if (!codeField || !copyButton) return;
-
-  codeField.select();
-  codeField.setSelectionRange(0, 99999);
-
-  let success = false;
-  try {
-    success = document.execCommand('copy');
-  } catch (err) { console.error('Erro ao copiar: ', err); }
-
-  if (success) {
-    const originalText = copyButton.textContent;
-    copyButton.textContent = "✅ Código copiado!";
-    copyButton.style.backgroundColor = '#4CAF50';
-    copyButton.disabled = true;
-
-    setTimeout(() => {
-      copyButton.textContent = originalText;
-      copyButton.style.backgroundColor = '';
-      copyButton.disabled = false;
-      if (window.getSelection) {
-        window.getSelection().removeAllRanges();
-      } else if (document.selection) {
-        document.selection.empty();
-      }
-    }, 2500);
-  } else {
-    alert("Erro ao copiar o código. Por favor, selecione e copie manualmente.");
-  }
-}
-
-// ===============================================
-// 3. LÓGICA DO VALIDADOR DE REGEX
-// ... (Mantida) ...
-// ===============================================
-
-function testRegex() {
-  const regexStr = document.getElementById('regexInput') ? document.getElementById('regexInput').value : '';
-  const url = document.getElementById('urlInput') ? document.getElementById('urlInput').value : '';
-  const statusDiv = document.getElementById('matchStatus');
-  const resultArea = document.getElementById('regexResult');
-
-  if (!statusDiv || !resultArea) return;
-
-  statusDiv.className = 'match-status';
-  resultArea.value = '';
-
-  if (!regexStr || !url) {
-    statusDiv.textContent = 'Insira a Regex e a URL acima para testar.';
-    return;
-  }
-
-  try {
-    const regex = new RegExp(regexStr, 'g');
-
-    let matches = [];
-    let match;
-
-    while ((match = regex.exec(url)) !== null) {
-      matches.push(Array.from(match));
-    }
-
-    if (matches.length > 0) {
-      statusDiv.textContent = `✅ SUCESSO! ${matches.length} Match(es) Encontrado(s).`;
-      statusDiv.classList.add('match-success');
-
-      let output = "Grupos Capturados:\n";
-      matches.forEach((m, index) => {
-        output += `\n--- Match ${index + 1} ---\n`;
-        output += `Match Completo (Índice 0): ${m[0]}\n`;
-
-        m.slice(1).forEach((group, gIndex) => {
-          output += `Grupo Capturado ${gIndex + 1}: ${group}\n`;
-        });
-      });
-      resultArea.value = output;
-
-    } else {
-      statusDiv.textContent = '❌ FALHA! Nenhuma correspondência de URL encontrada.';
-      statusDiv.classList.add('match-failure');
-      resultArea.value = '// Nenhum grupo capturado.';
-    }
-
-  } catch (e) {
-    statusDiv.textContent = `⚠️ ERRO na Expressão Regular: ${e.message}`;
-    statusDiv.classList.add('match-failure');
-    resultArea.value = '// Erro de sintaxe na Regex.';
-  }
-}
-
-
-// ===============================================
-// 4. LÓGICA DE TROCA DE IDIOMA (CORRIGIDA COM BASE_PATH)
-// ===============================================
-
-function switchLanguage(langCode) {
-  if (typeof BASE_PATH === 'undefined') {
-    console.error("BASE_PATH não está definido no HTML. Verifique a documentação.");
-    return;
-  }
-
-  const currentURL = window.location.pathname;
-
-  // 1. Encontrar o nome do arquivo atual (universal)
-  const urlParts = currentURL.split('/');
-  // O último elemento que não é vazio e que não é o código de idioma é o arquivo
-  let fileName = urlParts.pop() || urlParts.pop() || 'index.html';
-
-  // 2. Construir o novo caminho
-  let newPath;
-
-  if (langCode === 'pt') {
-    // PT: BASE_PATH + nome do arquivo. Ex: /martech-tools/index.html
-    newPath = BASE_PATH + fileName;
-  } else {
-    // Outros idiomas: BASE_PATH + langCode + / + nome do arquivo. Ex: /martech-tools/es/index.html
-    newPath = BASE_PATH + langCode + '/' + fileName;
-  }
-
-  // 3. Limpeza final para remover barras duplas indesejadas
-  newPath = newPath.replace(/\/\//g, '/');
-
-  window.location.href = newPath;
-}
-
-// ===============================================
-// 5. INICIALIZAÇÃO E SELEÇÃO CORRETA DO DROPDOWN
-// ===============================================
-
-document.addEventListener('DOMContentLoaded', () => {
-  // ... (Inicialização das Ferramentas) ...
-
-  const cookieGeneratorForm = document.getElementById('cookie-generator-form');
-  if (cookieGeneratorForm) {
-    document.querySelectorAll('#cookie-generator-form input').forEach(input => {
-      input.addEventListener('input', generateCode);
-    });
-    document.querySelector('button[onclick="generateCode()"]').addEventListener('click', generateCode);
-    generateCode();
-  }
-
-  const regexInput = document.getElementById('regexInput');
-  if (regexInput) {
-    testRegex();
-  }
-
-  // ... (Seleção Correta do Dropdown) ...
-
-  const switcher = document.getElementById('language-switcher');
-  if (switcher) {
-    const path = window.location.pathname;
-    let currentLang = 'pt';
-
-    if (path.includes('/en/')) {
-      currentLang = 'en';
-    } else if (path.includes('/es/')) {
-      currentLang = 'es';
-    }
-
-    switcher.value = currentLang;
-  }
-});
+`;outputCodeElement.value=generatedCode.trim()}
+function copyCode(){const codeField=document.getElementById('outputCode');const copyButton=document.querySelector('.copy-button');if(!codeField||!copyButton)return;codeField.select();codeField.setSelectionRange(0,99999);let success=!1;try{success=document.execCommand('copy')}catch(err){console.error('Erro ao copiar: ',err)}
+if(success){const originalText=copyButton.textContent;copyButton.textContent="✅ Código copiado!";copyButton.style.backgroundColor='#4CAF50';copyButton.disabled=!0;setTimeout(()=>{copyButton.textContent=originalText;copyButton.style.backgroundColor='';copyButton.disabled=!1;if(window.getSelection){window.getSelection().removeAllRanges()}else if(document.selection){document.selection.empty()}},2500)}else{alert("Erro ao copiar o código. Por favor, selecione e copie manualmente.")}}
+function testRegex(){const regexStr=document.getElementById('regexInput')?document.getElementById('regexInput').value:'';const url=document.getElementById('urlInput')?document.getElementById('urlInput').value:'';const statusDiv=document.getElementById('matchStatus');const resultArea=document.getElementById('regexResult');if(!statusDiv||!resultArea)return;statusDiv.className='match-status';resultArea.value='';if(!regexStr||!url){statusDiv.textContent='Insira a Regex e a URL acima para testar.';return}
+try{const regex=new RegExp(regexStr,'g');let matches=[];let match;while((match=regex.exec(url))!==null){matches.push(Array.from(match))}
+if(matches.length>0){statusDiv.textContent=`✅ SUCESSO! ${matches.length} Match(es) Encontrado(s).`;statusDiv.classList.add('match-success');let output="Grupos Capturados:\n";matches.forEach((m,index)=>{output+=`\n--- Match ${index + 1} ---\n`;output+=`Match Completo (Índice 0): ${m[0]}\n`;m.slice(1).forEach((group,gIndex)=>{output+=`Grupo Capturado ${gIndex + 1}: ${group}\n`})});resultArea.value=output}else{statusDiv.textContent='❌ FALHA! Nenhuma correspondência de URL encontrada.';statusDiv.classList.add('match-failure');resultArea.value='// Nenhum grupo capturado.'}}catch(e){statusDiv.textContent=`⚠️ ERRO na Expressão Regular: ${e.message}`;statusDiv.classList.add('match-failure');resultArea.value='// Erro de sintaxe na Regex.'}}
+function switchLanguage(langCode){if(typeof BASE_PATH==='undefined'){console.error("BASE_PATH não está definido no HTML. Verifique a documentação.");return}
+const currentURL=window.location.pathname;const urlParts=currentURL.split('/');let fileName=urlParts.pop()||urlParts.pop()||'index.html';let newPath;if(langCode==='pt'){newPath=BASE_PATH+fileName}else{newPath=BASE_PATH+langCode+'/'+fileName}
+newPath=newPath.replace(/\/\//g,'/');window.location.href=newPath}
+document.addEventListener('DOMContentLoaded',()=>{const cookieGeneratorForm=document.getElementById('cookie-generator-form');if(cookieGeneratorForm){document.querySelectorAll('#cookie-generator-form input').forEach(input=>{input.addEventListener('input',generateCode)});document.querySelector('button[onclick="generateCode()"]').addEventListener('click',generateCode);generateCode()}
+const regexInput=document.getElementById('regexInput');if(regexInput){testRegex()}
+const switcher=document.getElementById('language-switcher');if(switcher){const path=window.location.pathname;let currentLang='pt';if(path.includes('/en/')){currentLang='en'}else if(path.includes('/es/')){currentLang='es'}
+switcher.value=currentLang}})
