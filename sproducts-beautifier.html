@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formatador s.products | MarTech Tools</title>
+  <meta name="description" content="Formate, ordene e visualize strings s.products do Adobe Analytics.">
+  <link rel="canonical" href="https://martechtools.com.br/sproducts-beautifier.html">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+  <script> const BASE_PATH = '/'; </script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h2>MarTech Tools</h2>
+      <a href="index.html">🏠 Home</a>
+      <a href="cookie-generator.html">🍪 Gerador de Cookies</a>
+      <a href="regex-validator.html">🔍 Validador Regex</a>
+      <a href="sproducts-beautifier.html" class="active">📊 s.products Beautifier</a>
+      <div class="legal-links">
+        <a href="privacidade.html">Política de Privacidade</a>
+        <a href="termos.html">Termos de Uso</a>
+        <a href="contato.html">Contato</a>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="language-selector">
+        <select id="language-switcher" onchange="switchLanguage(this.value)">
+          <option value="pt" selected>🇧🇷 Português</option>
+          <option value="en">🇺🇸 English</option>
+          <option value="es">🇪🇸 Español</option>
+        </select>
+      </div>
+
+      <h1>📊 s.products Beautifier & Visualizador</h1>
+      <p>Formate, ordene e visualize o Data Layer do Adobe Analytics.</p>
+
+      <div class="ad-space-top">[AdSense - Top Leaderboard 728x90]</div>
+
+      <div class="form-group">
+        <label for="rawInput">Cole a String s.products Bruta:</label>
+        <textarea id="rawInput" style="min-height: 100px;"
+          placeholder="Ex: Cat;Prod;Qty;;;eVarX=valor,Cat2;Prod2..."></textarea>
+      </div>
+
+      <button onclick="processAndPlotProducts()">Analisar e Plotar Tabela</button>
+
+      <h2 style="margin-top: 40px;">String s.products Formatada (Ordenada):</h2>
+      <textarea id="formattedOutput" readonly style="min-height: 100px;"></textarea>
+
+      <h2 style="margin-top: 40px;">Visualização em Tabela:</h2>
+      <div id="tableContainer" style="margin-bottom: 20px;"></div>
+
+      <div class="ad-space-bottom">[AdSense - Bloco Responsivo]</div>
+    </div>
+  </div>
+  <script src="scripts.js"></script>
+</body>
+
+</html>

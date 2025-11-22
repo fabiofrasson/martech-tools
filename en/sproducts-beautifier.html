@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Regex URL Validator | MarTech Tools</title>
+  <title>s.products Formatter | MarTech Tools</title>
 
-  <meta name="description" content="Instantly validate Regular Expressions (Regex) against URLs.">
-  <link rel="canonical" href="https://martechtools.com.br/regex-validator.html">
+  <meta name="description" content="Format, sort, and visualize Adobe Analytics s.products strings in a clean table.">
+  <link rel="canonical" href="https://martechtools.com.br/sproducts-beautifier.html">
 
   <link rel="icon" type="image/x-icon" href="../favicon.ico">
   <link rel="stylesheet" href="../styles.css">
@@ -32,8 +32,8 @@
       <h2>MarTech Tools</h2>
       <a href="index.html">🏠 Home</a>
       <a href="cookie-generator.html">🍪 Cookie Generator</a>
-      <a href="regex-validator.html" class="active">🔍 Regex Validator</a>
-      <a href="sproducts-beautifier.html">📊 s.products Beautifier</a>
+      <a href="regex-validator.html">🔍 Regex Validator</a>
+      <a href="sproducts-beautifier.html" class="active">📊 s.products Beautifier</a>
       <div class="legal-links">
         <a href="privacidade.html">Privacy Policy</a>
         <a href="termos.html">Terms of Use</a>
@@ -49,32 +49,27 @@
           <option value="es">🇪🇸 Español</option>
         </select>
       </div>
-      <h1>🔍 Regex URL Validator</h1>
-      <p>Test if a specific URL matches your Regex.</p>
+
+      <h1>📊 s.products Beautifier & Visualizer</h1>
+      <p>Format, sort, and visualize Adobe Analytics Data Layer (`s.products`) in table format for consistency.</p>
 
       <div class="ad-space-top">[AdSense - Top Leaderboard 728x90]</div>
 
-      <div class="tool-content">
-        <div class="form-group">
-          <label for="regexInput">Regular Expression (Regex):</label>
-          <input type="text" id="regexInput" placeholder="Ex: \/product\/.+\/checkout">
-        </div>
-
-        <div class="form-group">
-          <label for="urlInput">Test URL:</label>
-          <input type="text" id="urlInput" placeholder="Ex: https://www.example.com/product/sku99/checkout">
-        </div>
-
-        <h3 style="margin-top: 10px;">Test Result:</h3>
-        <div id="matchStatus" class="match-status">
-          Enter Regex and URL above to test.
-        </div>
-
-        <h3 style="margin-top: 20px;">Regex Captures (Matches):</h3>
-        <textarea id="regexResult" readonly>// Captured Matches (Groups)</textarea>
-
-        <div class="ad-space-bottom">[AdSense - Responsive Block]</div>
+      <div class="form-group">
+        <label for="rawInput">Paste Raw s.products String:</label>
+        <textarea id="rawInput" style="min-height: 100px;"
+          placeholder="Ex: Cat;Prod;Qty;;;eVarX=val,Cat2;Prod2..."></textarea>
       </div>
+
+      <button onclick="processAndPlotProducts()">Analyze and Plot Table</button>
+
+      <h2 style="margin-top: 40px;">Formatted s.products String (Sorted):</h2>
+      <textarea id="formattedOutput" readonly style="min-height: 100px;"></textarea>
+
+      <h2 style="margin-top: 40px;">Table Visualization:</h2>
+      <div id="tableContainer" style="margin-bottom: 20px;"></div>
+
+      <div class="ad-space-bottom">[AdSense - Responsive Block]</div>
     </div>
   </div>
   <script src="../scripts.js"></script>

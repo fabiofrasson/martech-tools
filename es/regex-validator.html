@@ -5,20 +5,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Validador URL Regex | MarTech Tools</title>
-  <meta name="description"
-    content="Valide expresiones regulares (Regex) al instante contra URLs. Esencial para crear reglas de activación precisas en cualquier sistema de Tag Management.">
+
+  <meta name="description" content="Valide expresiones regulares (Regex) al instante contra URLs.">
   <link rel="canonical" href="https://martechtools.com.br/regex-validator.html">
+
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
   <link rel="stylesheet" href="../styles.css">
+  <script> const BASE_PATH = '/'; </script>
+
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1207406513402073"
     crossorigin="anonymous"></script>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FNKEDFWT21"></script>
+  <meta name="google-adsense-account" content="ca-pub-1207406513402073">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SEU_ID_DE_MEDICAO"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
-    gtag('config', 'G-FNKEDFWT21');
+    gtag('config', 'G-SEU_ID_DE_MEDICAO');
   </script>
 </head>
 
@@ -29,12 +33,14 @@
       <a href="index.html">🏠 Inicio</a>
       <a href="cookie-generator.html">🍪 Generador de Cookies</a>
       <a href="regex-validator.html" class="active">🔍 Validador Regex</a>
+      <a href="sproducts-beautifier.html">📊 s.products Beautifier</a>
       <div class="legal-links">
         <a href="privacidade.html">Política de Privacidad</a>
         <a href="termos.html">Términos de Uso</a>
         <a href="contato.html">Contacto</a>
       </div>
     </div>
+
     <div class="main-content">
       <div class="language-selector">
         <select id="language-switcher" onchange="switchLanguage(this.value)">
@@ -44,35 +50,34 @@
         </select>
       </div>
       <h1>🔍 Validador de URL con Expresión Regular (Regex)</h1>
-      <p>Pruebe si una URL específica coincide con su Regex. Esencial para optimizar las reglas de activación de Tags en
-        Launch y Tealium.</p>
+      <p>Pruebe si una URL específica coincide con su Regex.</p>
+
       <div class="ad-space-top">[AdSense - Top Leaderboard 728x90]</div>
+
       <div class="tool-content">
         <div class="form-group">
           <label for="regexInput">Expresión Regular (Regex):</label>
-          <input type="text" id="regexInput" placeholder="Ej: \/producto\/.+\/comprar" oninput="testRegex()">
+          <input type="text" id="regexInput" placeholder="Ej: \/producto\/.+\/comprar">
         </div>
+
         <div class="form-group">
           <label for="urlInput">URL de Prueba:</label>
-          <input type="text" id="urlInput" placeholder="Ej: https://www.ejemplo.com/producto/sku99/comprar"
-            oninput="testRegex()">
+          <input type="text" id="urlInput" placeholder="Ej: https://www.ejemplo.com/producto/sku99/comprar">
         </div>
+
         <h3 style="margin-top: 10px;">Resultado de la Prueba:</h3>
         <div id="matchStatus" class="match-status">
           Ingrese la Regex y la URL arriba para probar.
         </div>
+
         <h3 style="margin-top: 20px;">Capturas de Regex (Matches):</h3>
         <textarea id="regexResult" readonly>// Matches capturados por la Regex (Grupos)</textarea>
-        <div class="ad-space-bottom"
-          style="margin-top: 40px; height: 250px; background-color: #e0e0e0; text-align: center; line-height: 250px; border-radius: 4px;">
-          [AdSense - Bloque Responsivo]</div>
+
+        <div class="ad-space-bottom">[AdSense - Bloque Responsivo]</div>
       </div>
     </div>
   </div>
   <script src="../scripts.js"></script>
-  <script>
-    const BASE_PATH = '/';
-  </script>
 </body>
 
 </html>

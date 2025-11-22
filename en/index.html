@@ -4,22 +4,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MarTech Tools - Home</title>
-  <meta name="description"
-    content="Free JavaScript tools for optimizing Tag Management (Tealium, Adobe Launch) and Web Analytics. Generate clean codes and test Regex instantly.">
-  <link rel="canonical" href="https://martechtools.com.br/">
-  <link rel="stylesheet" href="../styles.css">
+  <title>MarTech Tools - Home | Code Hub & Tools</title>
+
+  <script> const BASE_PATH = '/'; </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1207406513402073"
     crossorigin="anonymous"></script>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FNKEDFWT21"></script>
+  <meta name="google-adsense-account" content="ca-pub-1207406513402073">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SEU_ID_DE_MEDICAO"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
-    gtag('config', 'G-FNKEDFWT21');
+    gtag('config', 'G-SEU_ID_DE_MEDICAO');
   </script>
+
+  <meta name="description"
+    content="Free JavaScript tools and boilerplates for optimizing Data Layer, Tag Management (Tealium, Adobe Launch) and Web Analytics. Generate clean code and test Regex.">
+  <link rel="canonical" href="https://martechtools.com.br/">
+
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../styles.css">
 </head>
 
 <body>
@@ -29,12 +34,15 @@
       <a href="index.html" class="active">🏠 Home</a>
       <a href="cookie-generator.html">🍪 Cookie Generator</a>
       <a href="regex-validator.html">🔍 Regex Validator</a>
+      <a href="sproducts-beautifier.html">📊 s.products Beautifier</a>
+
       <div class="legal-links">
         <a href="privacidade.html">Privacy Policy</a>
         <a href="termos.html">Terms of Use</a>
         <a href="contato.html">Contact</a>
       </div>
     </div>
+
     <div class="main-content">
       <div class="language-selector">
         <select id="language-switcher" onchange="switchLanguage(this.value)">
@@ -43,34 +51,78 @@
           <option value="es">🇪🇸 Español</option>
         </select>
       </div>
-      <h1>Welcome to Essential MarTech Tools</h1>
-      <p>Your platform for optimizing Tag Management and Web Analytics implementations with clean and effective code.
-        Developed for professionals working with <strong>Tealium iQ</strong>, <strong>Adobe Launch</strong>, and
-        <strong>Adobe Analytics</strong>.
-      </p>
+
+      <h1>Essential MarTech Tools: Your Code Hub</h1>
+      <p>Platform dedicated to <strong>Tag Management</strong> (Tealium, Adobe Launch) and <strong>Web
+          Analytics</strong> professionals.</p>
+
       <div class="ad-space-top">[AdSense - Top Leaderboard 728x90]</div>
-      <h2>Why Use Our Tools?</h2>
+
+      <h2 style="margin-top: 40px;">1. The Hidden Cost of a Low-Quality Data Layer</h2>
+      <div
+        style="padding: 20px; background-color: #f8f8f8; border-left: 4px solid #007bff; margin-bottom: 30px; border-radius: 4px;">
+        <p>A poorly structured <strong>Data Layer (DL)</strong> generates dirty data and financial loss. Standardize
+          your structure now to avoid implementation errors and wasted time.</p>
+      </div>
+
+      <h2>2. Boilerplate: Essential Data Layer Structure</h2>
+      <textarea id="data-layer-boilerplate" readonly
+        style="min-height: 250px; background-color: #f0f0f5; color: #333; font-size: 13px;">
+{
+  'page': {
+    'pageName': 'Home Page',
+    'pageType': 'homepage',
+    'language': 'en-US'
+  },
+  'user': {
+    'isLoggedIn': false,
+    'visitorId': null
+  },
+  'event': 'dl_view'
+}
+            </textarea>
+      <button onclick="copyBoilerplate()">Copy Data Layer</button>
+
+      <div style="margin: 40px 0;"></div>
+
+      <h2>3. Essential Tools and Snippets</h2>
+      <h3 style="margin-top: 20px;">Code Utilities:</h3>
       <ul>
-        <li><strong>Code Focus:</strong> Generators and validators that save time writing JavaScript for the Data Layer.
-        </li>
-        <li><strong>Compatibility:</strong> Solutions optimized for the main MarTech platforms on the market.</li>
-        <li><strong>Free:</strong> Use our tools to speed up your day-to-day implementation work.</li>
+        <li><a href="cookie-generator.html">🍪 <strong>Cookie Code Generator</strong></a></li>
+        <li><a href="regex-validator.html">🔍 <strong>Regex URL Validator</strong></a></li>
+        <li><a href="sproducts-beautifier.html">📊 <strong>s.products Beautifier</strong></a></li>
       </ul>
-      <h3 style="margin-top: 30px;">Available Tools:</h3>
-      <ul>
-        <li><a href="cookie-generator.html"><strong>Cookie Code Generator:</strong></a> Create clean JS functions for
-          cookie manipulation.</li>
-        <li><a href="regex-validator.html"><strong>URL Regex Validator:</strong></a> Test and debug your regular
-          expressions before applying them in Tag Manager rules.</li>
-      </ul>
-      <div class="ad-space-bottom"
-        style="margin-top: 40px; height: 250px; background-color: #e0e0e0; text-align: center; line-height: 250px; border-radius: 4px;">
-        [AdSense - Responsive Block]</div>
+
+      <h3 style="margin-top: 20px;">Useful Snippet: Get URL Parameter</h3>
+      <textarea id="url-param-snippet" readonly
+        style="min-height: 120px; background-color: #f0f0f5; color: #333; font-size: 13px;">
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+}
+            </textarea>
+      <button onclick="copyUrlSnippet()">Copy Snippet</button>
+
+      <div class="ad-space-bottom">[AdSense - Responsive Block]</div>
     </div>
   </div>
+
   <script src="../scripts.js"></script>
   <script>
-    const BASE_PATH = '/';
+    function copyBoilerplate() {
+      const t = document.createElement('textarea');
+      t.value = document.getElementById('data-layer-boilerplate').value;
+      document.body.appendChild(t); t.select(); document.execCommand('copy'); document.body.removeChild(t);
+      alert("Boilerplate copied!");
+    }
+    function copyUrlSnippet() {
+      const t = document.createElement('textarea');
+      t.value = document.getElementById('url-param-snippet').value;
+      document.body.appendChild(t); t.select(); document.execCommand('copy'); document.body.removeChild(t);
+      alert("Snippet copied!");
+    }
   </script>
 </body>
 

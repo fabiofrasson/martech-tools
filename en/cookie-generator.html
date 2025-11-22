@@ -5,20 +5,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cookie Code Generator | MarTech Tools</title>
+
   <meta name="description"
-    content="Generate clean and robust JavaScript codes to create, read, and delete Cookies. Optimized for Adobe Launch and Tealium iQ implementations.">
+    content="Generate clean and robust JavaScript codes to create, read, and delete Cookies. Optimized for Adobe Launch and Tealium iQ.">
   <link rel="canonical" href="https://martechtools.com.br/cookie-generator.html">
+
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
   <link rel="stylesheet" href="../styles.css">
+  <script> const BASE_PATH = '/'; </script>
+
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1207406513402073"
     crossorigin="anonymous"></script>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FNKEDFWT21"></script>
+  <meta name="google-adsense-account" content="ca-pub-1207406513402073">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SEU_ID_DE_MEDICAO"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
-    gtag('config', 'G-FNKEDFWT21');
+    gtag('config', 'G-SEU_ID_DE_MEDICAO');
   </script>
 </head>
 
@@ -29,7 +34,7 @@
       <a href="index.html">🏠 Home</a>
       <a href="cookie-generator.html" class="active">🍪 Cookie Generator</a>
       <a href="regex-validator.html">🔍 Regex Validator</a>
-
+      <a href="sproducts-beautifier.html">📊 s.products Beautifier</a>
       <div class="legal-links">
         <a href="privacidade.html">Privacy Policy</a>
         <a href="termos.html">Terms of Use</a>
@@ -45,61 +50,46 @@
           <option value="es">🇪🇸 Español</option>
         </select>
       </div>
+      <h1>🍪 Cookie Code Generator</h1>
+      <p>Create robust cookie functions for Adobe Launch and Tealium iQ.</p>
 
-      <h1>🍪 JavaScript Cookie Code Generator</h1>
-      <p>Create robust cookie functions for Adobe Launch and Tealium iQ without relying on external libraries.</p>
-
-      <div class="ad-space-top">
-        [AdSense - Top Leaderboard 728x90]
-      </div>
+      <div class="ad-space-top">[AdSense - Top Leaderboard 728x90]</div>
 
       <div class="tool-content" id="cookie-generator-form">
-
         <div class="form-group">
           <label for="cookieName">Cookie Name (c_name):</label>
-          <input type="text" id="cookieName" placeholder="user_segment" required oninput="generateCode()">
+          <input type="text" id="cookieName" placeholder="user_segment" required>
         </div>
-
         <div class="form-group">
           <label for="cookieValue">Default Value (c_value, optional):</label>
-          <input type="text" id="cookieValue" placeholder="default_value" oninput="generateCode()">
+          <input type="text" id="cookieValue" placeholder="default_value">
         </div>
-
         <div class="form-group">
           <label for="expireDays">Expiration (Days, optional):</label>
-          <input type="number" id="expireDays" placeholder="30" min="0" oninput="generateCode()">
+          <input type="number" id="expireDays" placeholder="30" min="0">
         </div>
-
         <div class="form-group">
-          <label for="cookiePath">Path (c_path, optional, defaults to '/'):</label>
-          <input type="text" id="cookiePath" placeholder="/" oninput="generateCode()">
+          <label for="cookiePath">Path (c_path, optional, default '/'):</label>
+          <input type="text" id="cookiePath" placeholder="/">
         </div>
-
         <div class="form-group">
-          <label for="cookieDomain">Domain (c_domain, optional, important for subdomains):</label>
-          <input type="text" id="cookieDomain" placeholder="Ex: .example.com" oninput="generateCode()">
+          <label for="cookieDomain">Domain (c_domain, optional):</label>
+          <input type="text" id="cookieDomain" placeholder="Ex: .example.com">
         </div>
 
         <button onclick="generateCode()">Generate Code</button>
 
         <h3 style="margin-top: 40px;">Generated JavaScript Code:</h3>
-
         <div class="copy-container">
           <button class="copy-button" onclick="copyCode()">Copy Code</button>
         </div>
         <textarea id="outputCode" readonly>// Click Generate Code to start...</textarea>
 
-        <div class="ad-space-bottom"
-          style="margin-top: 40px; height: 250px; background-color: #e0e0e0; text-align: center; line-height: 250px; border-radius: 4px;">
-          [AdSense - Responsive Block 300x250/336x280]
-        </div>
+        <div class="ad-space-bottom">[AdSense - Responsive Block]</div>
       </div>
     </div>
   </div>
   <script src="../scripts.js"></script>
-  <script>
-    const BASE_PATH = '/';
-  </script>
 </body>
 
 </html>

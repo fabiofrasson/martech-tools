@@ -4,22 +4,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MarTech Tools - Inicio</title>
-  <meta name="description"
-    content="Herramientas JavaScript gratuitas para optimizar Tag Management (Tealium, Adobe Launch) y Web Analytics. Genere códigos limpios y pruebe Regex.">
-  <link rel="canonical" href="https://martechtools.com.br/">
-  <link rel="stylesheet" href="../styles.css">
+  <title>MarTech Tools - Inicio | Centro de Código y Herramientas</title>
+
+  <script> const BASE_PATH = '/'; </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1207406513402073"
     crossorigin="anonymous"></script>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FNKEDFWT21"></script>
+  <meta name="google-adsense-account" content="ca-pub-1207406513402073">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SEU_ID_DE_MEDICAO"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
-    gtag('config', 'G-FNKEDFWT21');
+    gtag('config', 'G-SEU_ID_DE_MEDICAO');
   </script>
+
+  <meta name="description"
+    content="Herramientas JavaScript gratuitas y boilerplates para optimizar Data Layer, Tag Management (Tealium, Adobe Launch) y Web Analytics.">
+  <link rel="canonical" href="https://martechtools.com.br/">
+
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../styles.css">
 </head>
 
 <body>
@@ -29,12 +34,15 @@
       <a href="index.html" class="active">🏠 Inicio</a>
       <a href="cookie-generator.html">🍪 Generador de Cookies</a>
       <a href="regex-validator.html">🔍 Validador Regex</a>
+      <a href="sproducts-beautifier.html">📊 s.products Beautifier</a>
+
       <div class="legal-links">
         <a href="privacidade.html">Política de Privacidad</a>
         <a href="termos.html">Términos de Uso</a>
         <a href="contato.html">Contacto</a>
       </div>
     </div>
+
     <div class="main-content">
       <div class="language-selector">
         <select id="language-switcher" onchange="switchLanguage(this.value)">
@@ -43,35 +51,78 @@
           <option value="es" selected>🇪🇸 Español</option>
         </select>
       </div>
-      <h1>Bienvenido a Herramientas Esenciales MarTech</h1>
-      <p>Su plataforma para optimizar implementaciones de Tag Management y Web Analytics con código limpio y efectivo.
-        Desarrollado para profesionales que trabajan con <strong>Tealium iQ</strong>, <strong>Adobe Launch</strong> y
-        <strong>Adobe Analytics</strong>.
-      </p>
+
+      <h1>Herramientas Esenciales MarTech: Su Centro de Código</h1>
+      <p>Plataforma dedicada a profesionales de <strong>Tag Management</strong> (Tealium, Adobe Launch) y <strong>Web
+          Analytics</strong>.</p>
+
       <div class="ad-space-top">[AdSense - Top Leaderboard 728x90]</div>
-      <h2>¿Por qué usarlas?</h2>
+
+      <h2 style="margin-top: 40px;">1. El Costo Oculto de un Data Layer de Mala Calidad</h2>
+      <div
+        style="padding: 20px; background-color: #f8f8f8; border-left: 4px solid #007bff; margin-bottom: 30px; border-radius: 4px;">
+        <p>Un <strong>Data Layer (DL)</strong> mal estructurado genera datos sucios y pérdidas financieras. Estandarice
+          su estructura ahora para evitar errores de implementación y pérdida de tiempo.</p>
+      </div>
+
+      <h2>2. Boilerplate: Estructura Esencial de Data Layer</h2>
+      <textarea id="data-layer-boilerplate" readonly
+        style="min-height: 250px; background-color: #f0f0f5; color: #333; font-size: 13px;">
+{
+  'page': {
+    'pageName': 'Home Page',
+    'pageType': 'homepage',
+    'language': 'es-ES'
+  },
+  'user': {
+    'isLoggedIn': false,
+    'visitorId': null
+  },
+  'event': 'dl_view'
+}
+            </textarea>
+      <button onclick="copyBoilerplate()">Copiar Data Layer</button>
+
+      <div style="margin: 40px 0;"></div>
+
+      <h2>3. Herramientas y Fragmentos Esenciales</h2>
+      <h3 style="margin-top: 20px;">Utilidades de Código:</h3>
       <ul>
-        <li><strong>Foco en Código:</strong> Generadores y validadores que ahorran tiempo en la escritura de JavaScript
-          para la Capa de Datos (Data Layer).</li>
-        <li><strong>Compatibilidad:</strong> Soluciones optimizadas para las principales plataformas MarTech del
-          mercado.</li>
-        <li><strong>Gratis:</strong> Use nuestras herramientas para acelerar su trabajo diario de implementación.</li>
+        <li><a href="cookie-generator.html">🍪 <strong>Generador de Código de Cookies</strong></a></li>
+        <li><a href="regex-validator.html">🔍 <strong>Validador URL Regex</strong></a></li>
+        <li><a href="sproducts-beautifier.html">📊 <strong>s.products Beautifier</strong></a></li>
       </ul>
-      <h3 style="margin-top: 30px;">Herramientas Disponibles:</h3>
-      <ul>
-        <li><a href="cookie-generator.html"><strong>Generador de Código de Cookies:</strong></a> Cree funciones JS
-          limpias para manipular cookies.</li>
-        <li><a href="regex-validator.html"><strong>Validador URL Regex:</strong></a> Pruebe y depure sus expresiones
-          regulares antes de aplicarlas en reglas de Tag Manager.</li>
-      </ul>
-      <div class="ad-space-bottom"
-        style="margin-top: 40px; height: 250px; background-color: #e0e0e0; text-align: center; line-height: 250px; border-radius: 4px;">
-        [AdSense - Bloque Responsivo]</div>
+
+      <h3 style="margin-top: 20px;">Fragmento Útil: Obtener Parámetro de URL</h3>
+      <textarea id="url-param-snippet" readonly
+        style="min-height: 120px; background-color: #f0f0f5; color: #333; font-size: 13px;">
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+}
+            </textarea>
+      <button onclick="copyUrlSnippet()">Copiar Fragmento</button>
+
+      <div class="ad-space-bottom">[AdSense - Bloque Responsivo]</div>
     </div>
   </div>
+
   <script src="../scripts.js"></script>
   <script>
-    const BASE_PATH = '/';
+    function copyBoilerplate() {
+      const t = document.createElement('textarea');
+      t.value = document.getElementById('data-layer-boilerplate').value;
+      document.body.appendChild(t); t.select(); document.execCommand('copy'); document.body.removeChild(t);
+      alert("¡Boilerplate copiado!");
+    }
+    function copyUrlSnippet() {
+      const t = document.createElement('textarea');
+      t.value = document.getElementById('url-param-snippet').value;
+      document.body.appendChild(t); t.select(); document.execCommand('copy'); document.body.removeChild(t);
+      alert("¡Fragmento copiado!");
+    }
   </script>
 </body>
 

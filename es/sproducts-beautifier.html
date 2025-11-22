@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contacto | MarTech Tools</title>
+  <title>Formateador s.products | MarTech Tools</title>
 
-  <meta name="description" content="Póngase en contacto con el equipo de MarTech Tools.">
-  <link rel="canonical" href="https://martechtools.com.br/contato.html">
+  <meta name="description" content="Formatee, ordene y visualice cadenas s.products de Adobe Analytics.">
+  <link rel="canonical" href="https://martechtools.com.br/sproducts-beautifier.html">
 
   <link rel="icon" type="image/x-icon" href="../favicon.ico">
   <link rel="stylesheet" href="../styles.css">
@@ -33,12 +33,11 @@
       <a href="index.html">🏠 Inicio</a>
       <a href="cookie-generator.html">🍪 Generador de Cookies</a>
       <a href="regex-validator.html">🔍 Validador Regex</a>
-      <a href="sproducts-beautifier.html">📊 s.products Beautifier</a>
-
+      <a href="sproducts-beautifier.html" class="active">📊 s.products Beautifier</a>
       <div class="legal-links">
         <a href="privacidade.html">Política de Privacidad</a>
         <a href="termos.html">Términos de Uso</a>
-        <a href="contato.html" class="active">Contacto</a>
+        <a href="contato.html">Contacto</a>
       </div>
     </div>
 
@@ -47,25 +46,28 @@
         <select id="language-switcher" onchange="switchLanguage(this.value)">
           <option value="pt">🇧🇷 Português</option>
           <option value="en">🇺🇸 English</option>
-          <option value="es">🇪🇸 Español</option>
+          <option value="es" selected>🇪🇸 Español</option>
         </select>
       </div>
 
-      <h1>Ponte en Contacto</h1>
+      <h1>📊 s.products Beautifier y Visualizador</h1>
+      <p>Formatee, ordene y visualice cadenas Data Layer de Adobe Analytics (`s.products`).</p>
 
-      <p>Valoramos sus comentarios.</p>
+      <div class="ad-space-top">[AdSense - Top Leaderboard 728x90]</div>
 
-      <h2 style="margin-top: 30px;">Formas de Contacto</h2>
-
-      <div
-        style="margin: 30px 0; padding: 20px; background-color: #f0f0f5; border-left: 5px solid #007bff; border-radius: 4px;">
-        <p><strong>Correo Electrónico:</strong> <a
-            href="mailto:martech.code.tools@gmail.com">martech.code.tools@gmail.com</a></p>
-        <p><strong>Asuntos:</strong> Preguntas, Soporte, Errores.</p>
+      <div class="form-group">
+        <label for="rawInput">Pegue la cadena s.products sin procesar:</label>
+        <textarea id="rawInput" style="min-height: 100px;"
+          placeholder="Ej: Cat;Prod;Qty;;;eVarX=valor,Cat2;Prod2..."></textarea>
       </div>
 
-      <h2 style="margin-top: 30px;">Tiempo de Respuesta</h2>
-      <p>Nuestro objetivo es responder dentro de 48 a 72 horas hábiles.</p>
+      <button onclick="processAndPlotProducts()">Analizar y Graficar Tabla</button>
+
+      <h2 style="margin-top: 40px;">Cadena s.products Formateada (Ordenada):</h2>
+      <textarea id="formattedOutput" readonly style="min-height: 100px;"></textarea>
+
+      <h2 style="margin-top: 40px;">Visualización en Tabla:</h2>
+      <div id="tableContainer" style="margin-bottom: 20px;"></div>
 
       <div class="ad-space-bottom">[AdSense - Bloque Responsivo]</div>
     </div>
